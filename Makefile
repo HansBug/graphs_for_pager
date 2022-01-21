@@ -3,11 +3,11 @@ DOT          ?= $(shell which dot)
 RSVG_CONVERT ?= $(shell which rsvg-convert)
 SOURCE       ?= .
 
-PUMLS     := $(shell find ${SOURCE} -name *.puml)
+PUMLS     := $(shell find ${SOURCE} -name '*.puml')
 PUML_PNGS := $(addsuffix .puml.png, $(basename ${PUMLS}))
 PUML_SVGS := $(addsuffix .puml.svg, $(basename ${PUMLS}))
 
-GVS     := $(shell find ${SOURCE} -name *.gv)
+GVS     := $(shell find ${SOURCE} -name '*.gv')
 GV_PNGS := $(addsuffix .gv.png, $(basename ${GVS}))
 GV_SVGS := $(addsuffix .gv.svg, $(basename ${GVS}))
 

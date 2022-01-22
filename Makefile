@@ -39,7 +39,9 @@ tt:
 
 clean:
 	rm -rf \
-		$(shell find ${SOURCE} -name '*.svg') \
-		$(shell find ${SOURCE} -name '*.png') \
+		$(shell find ${SOURCE} -name '*.puml.svg') \
+		$(shell find ${SOURCE} -name '*.puml.png') \
+		$(shell find ${SOURCE} -name '*.gv.svg') \
+		$(shell find ${SOURCE} -name '*.gv.png') \
 		$(shell find ${SOURCE} -name '*.pdf')
 

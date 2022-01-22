@@ -12,7 +12,7 @@ GV_PNGS := $(addsuffix .gv.png, $(basename ${GVS}))
 GV_SVGS := $(addsuffix .gv.svg, $(basename ${GVS}))
 
 PNGS := ${PUML_PNGS} ${GV_PNGS}
-SVGS := ${PUML_SVGS} ${GV_SVGS}
+SVGS := ${PUML_SVGS} ${GV_SVGS} $(shell find ${SOURCE} -name '*.svg')
 PDFS := $(addsuffix .pdf, $(basename ${SVGS}))
 
 all: build

@@ -28,11 +28,11 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update -y
-          sudo apt-get install -y make wget curl cloc graphviz librsvg2-bin
+          sudo apt-get install -y make wget curl cloc graphviz inkscape
           pip install plantumlcli
           dot -V
           plantumlcli -v
-          rsvg-convert -v
+          inkscape -V
       - name: Generate
         env:
           ENV_PROD: 'true'

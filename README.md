@@ -7,7 +7,7 @@ Install the requirements
 
 ```bash
 sudo apt-get update -y
-sudo apt-get install -y make wget curl cloc graphviz librsvg2-bin  # graphviz and libsvg is necessary
+sudo apt-get install -y make wget curl cloc graphviz inkscape  # graphviz and inkscape is necessary
 pip install plantumlcli  # python should be 3.6 or higer version
 ```
 
@@ -18,7 +18,7 @@ Check the requirements
 ```bash
 make -v
 dot -v
-rsvg-convert -v
+inkscape -V
 plantumlcli -v
 plantumlcli -c  # make sure plantumlcli is runnable
 ```

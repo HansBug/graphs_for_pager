@@ -1,6 +1,6 @@
 PLANTUMLCLI  ?= $(shell which plantumlcli)
 DOT          ?= $(shell which dot)
-RSVG_CONVERT ?= $(shell which rsvg-convert)
+INKSCAPE     ?= $(shell which inkscape)
 SOURCE       ?= .
 
 PUMLS     := $(shell find ${SOURCE} -name '*.puml')
@@ -35,7 +35,9 @@ tt:
 	$(DOT) -Tsvg -o"$(shell readlink -f $@)" "$(shell readlink -f $<)"
 
 %.pdf: %.svg
-	$(RSVG_CONVERT) -f pdf -o "$(shell readlink -f $@)" "$(shell readlink -f $<)"
+	$(INKSCAPE) --file="$(shell readlink -f $<)" \
+		--without-gui --export-ignore-filters \
+		--export-pdf="$(shell readlink -f $@)"
 
 clean:
 	rm -rf \

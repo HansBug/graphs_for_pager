@@ -1,5 +1,6 @@
 PLANTUMLCLI  ?= $(shell which plantumlcli)
 DOT          ?= $(shell which dot)
+RSVG_CONVERT ?= $(shell which rsvg-convert)
 INKSCAPE     ?= $(shell which inkscape)
 SOURCE       ?= .
 
@@ -13,7 +14,7 @@ GV_SVGS := $(addsuffix .gv.svg, $(basename ${GVS}))
 
 PNGS := ${PUML_PNGS} ${GV_PNGS}
 SVGS := ${PUML_SVGS} ${GV_SVGS} $(shell find ${SOURCE} -name '*.svg')
-PDFS := $(addsuffix .pdf, $(basename ${SVGS}))
+PDFS := $(addsuffix .pdf, $(basename ${SVGS})) $(addsuffix .l.pdf, $(basename ${SVGS}))
 
 all: build
 
@@ -38,6 +39,9 @@ tt:
 	$(INKSCAPE) --file="$(shell readlink -f $<)" \
 		--without-gui --export-ignore-filters \
 		--export-pdf="$(shell readlink -f $@)"
+
+%.l.pdf: %.svg
+	$(RSVG_CONVERT) -f pdf -o "$(shell readlink -f $@)" "$(shell readlink -f $<)"
 
 clean:
 	rm -rf \

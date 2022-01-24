@@ -23,7 +23,7 @@ all:
 scripts:
 	$(MAKE) -f scripts.mk build
 
-build: scripts ${SVGS} ${PNGS} ${PDFS}
+build: ${SVGS} ${PNGS} ${PDFS}
 
 tt:
 	echo ${PDFS}

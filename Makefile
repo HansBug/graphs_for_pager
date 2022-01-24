@@ -18,7 +18,10 @@ PDFS := $(addsuffix .pdf, $(basename ${SVGS})) $(addsuffix .l.pdf, $(basename ${
 
 all: build
 
-build: ${SVGS} ${PNGS} ${PDFS}
+scripts:
+	$(MAKE) -f scripts.mk build
+
+build: scripts ${SVGS} ${PNGS} ${PDFS}
 
 tt:
 	echo ${PDFS}
@@ -44,6 +47,7 @@ tt:
 	$(RSVG_CONVERT) -f pdf -o "$(shell readlink -f $@)" "$(shell readlink -f $<)"
 
 clean:
+	$(MAKE) -f scripts.mk clean
 	rm -rf \
 		$(shell find ${SOURCE} -name '*.puml.svg') \
 		$(shell find ${SOURCE} -name '*.puml.png') \

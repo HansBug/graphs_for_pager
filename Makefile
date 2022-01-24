@@ -41,9 +41,9 @@ tt:
 	$(DOT) -Tsvg -o"$(shell readlink -f $@)" "$(shell readlink -f $<)"
 
 %.pdf: %.svg
-	$(INKSCAPE) --file="$(shell readlink -f $<)" \
-		--without-gui --export-ignore-filters \
-		--export-pdf="$(shell readlink -f $@)"
+	$(INKSCAPE) --export-ignore-filters \
+		--export-filename="$(shell readlink -f $@)" \
+		"$(shell readlink -f $<)"
 
 %.l.pdf: %.svg
 	$(RSVG_CONVERT) -f pdf -o "$(shell readlink -f $@)" "$(shell readlink -f $<)"

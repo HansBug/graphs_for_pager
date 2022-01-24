@@ -16,7 +16,9 @@ PNGS := ${PUML_PNGS} ${GV_PNGS}
 SVGS := ${PUML_SVGS} ${GV_SVGS} $(shell find ${SOURCE} -name '*.svg')
 PDFS := $(addsuffix .pdf, $(basename ${SVGS})) $(addsuffix .l.pdf, $(basename ${SVGS}))
 
-all: build
+all:
+	$(MAKE) scripts
+	$(MAKE) build
 
 scripts:
 	$(MAKE) -f scripts.mk build

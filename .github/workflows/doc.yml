@@ -42,5 +42,5 @@ jobs:
         run: |
           cloc .
           plantumlcli -c
-          make build
+          make all
           ls -al *.pdf *.svg *.png
